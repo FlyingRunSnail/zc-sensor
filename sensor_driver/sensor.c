@@ -10,7 +10,7 @@
 
 #define MODULE_NAME "[ZC-SENSOR]"
 
-static int debug = 1;
+static int debug = 0;
 #define SENSOR_LOG(FMT, ARG...) \
     do {\
             if (debug) \
@@ -46,7 +46,13 @@ int bsp_sensor_debug(int enable)
 
 int bsp_sensor_init(void)
 {
-    rs485_init("/dev/ttyUSB0");
+    char *dev = "/dev/ttyUSB0";
+    int ret = rs485_init(dev);
+    if (ret == RS485_ERR)
+    {
+        SENSOR_LOG("bsp sensorr init failed, can't open dev %s", dev);
+        return ZC_SENSOR_ERR;
+    }
     SENSOR_LOG("bsp sensor init ok!");
 
     return ZC_SENSOR_OK;
@@ -98,18 +104,18 @@ static int sensor_set_zero_pos(void)
 {
     char buf[8] = {0};
 
-    //rs485_send_and_wait_for("&ZEROP", "SA", 1);
     rs485_send_command("&ZEROP");
     usleep(100*1000);
     rs485_rcv_response(buf, 2, 5);
 
-    //if (!strstr(buf, "SA"))
     if (!strstr(buf, "X"))
     {
         SENSOR_LOG("no response or do not receive response.");
         rs485_dump(buf, 8);
         return ZC_SENSOR_ERR;
     }
+
+    SENSOR_LOG("set sensor to zero ok.");
 
     return ZC_SENSOR_OK;
 }

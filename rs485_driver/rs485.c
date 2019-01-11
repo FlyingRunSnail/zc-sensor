@@ -13,6 +13,7 @@
 #include "rs485.h"
 #include "serial.h"
 
+#define MODULE_NAME "[RS485]"
 #define RCV_BUF_LEN (16)
 
 static pthread_mutex_t rs485_read_lock;
@@ -24,7 +25,7 @@ static int debug = 0;
     do {\
             if (debug) \
             {\
-                msg_log("[RS485]"FMT"\n", ##ARG); \
+                msg_log(MODULE_NAME FMT"\n", ##ARG); \
             }\
         }while(0)
 
