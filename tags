@@ -1,0 +1,49 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC:=$(CROSS_COMPILE)gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS:=-g -Werror -Wall -pthread$/;"	m
+INCLUDES	Makefile	/^INCLUDES=-Isensor_driver\/ $/;"	m
+LDFLAGS	Makefile	/^LDFLAGS:= -lm -pthread$/;"	m
+MSG_LOG_BUF_LEN	lib/msg_log.c	8;"	d	file:
+OBJS	Makefile	/^OBJS=main.o sensor_driver\/sensor.o rs485_driver\/rs485.o rs485_driver\/serial.o lib\/msg_log.o$/;"	m
+RCV_BUF_LEN	rs485_driver/rs485.c	16;"	d	file:
+RM	Makefile	/^RM:=rm$/;"	m
+RS485_ERR	rs485_driver/rs485.h	5;"	d
+RS485_LOG	rs485_driver/rs485.c	23;"	d	file:
+RS485_OK	rs485_driver/rs485.h	4;"	d
+SENSOR_LOG	sensor_driver/sensor.c	11;"	d	file:
+TARGET	Makefile	/^TARGET:=zc-sensor$/;"	m
+ZC_SENSOR_ERR	sensor_driver/sensor.h	6;"	d
+ZC_SENSOR_OK	sensor_driver/sensor.h	5;"	d
+__MSG_LOG__	lib/msg_log.h	2;"	d
+__RS485_HEADER__	rs485_driver/rs485.h	2;"	d
+__SERIAL_HEAD__	rs485_driver/serial.h	2;"	d
+__ZC_SENSOR_DRIVER__	sensor_driver/sensor.h	2;"	d
+bsp_sensor_exit	sensor_driver/sensor.c	/^void bsp_sensor_exit(void)$/;"	f
+bsp_sensor_get_current_pos	sensor_driver/sensor.c	/^int bsp_sensor_get_current_pos(float *ret_pos)$/;"	f
+bsp_sensor_init	sensor_driver/sensor.c	/^int bsp_sensor_init(void)$/;"	f
+bsp_sensor_set_zero_pos	sensor_driver/sensor.c	/^int bsp_sensor_set_zero_pos(void)$/;"	f
+close_serial	rs485_driver/serial.c	/^void close_serial(void)$/;"	f
+debug	rs485_driver/rs485.c	/^static int debug = 1;$/;"	v	file:
+debug	sensor_driver/sensor.c	/^static int debug = 1;$/;"	v	file:
+get_fd	rs485_driver/serial.c	/^int get_fd(void)$/;"	f
+local_fd	rs485_driver/serial.c	/^static int local_fd = -1;$/;"	v	file:
+main	main.c	/^int main(int argc, char **argv)$/;"	f
+msg_log	lib/msg_log.c	/^int msg_log(char *fmt, ...)$/;"	f
+open_serial	rs485_driver/serial.c	/^int open_serial(const char *dev, int nSpeed, int nBits, char nEvent, int nStop)$/;"	f
+rs485_dump	rs485_driver/rs485.c	/^static void rs485_dump(const char *buf, unsigned int len)$/;"	f	file:
+rs485_exit	rs485_driver/rs485.c	/^void rs485_exit(void)$/;"	f
+rs485_init	rs485_driver/rs485.c	/^int rs485_init(const char *dev)$/;"	f
+rs485_rcv_response	rs485_driver/rs485.c	/^int rs485_rcv_response(char *response, unsigned int len, unsigned int timeout)$/;"	f
+rs485_read_lock	rs485_driver/rs485.c	/^static pthread_mutex_t rs485_read_lock;$/;"	v	file:
+rs485_send_and_wait_for	rs485_driver/rs485.c	/^int rs485_send_and_wait_for(const char *command, const char *wait, unsigned int timeout)$/;"	f
+rs485_send_command	rs485_driver/rs485.c	/^int rs485_send_command(const char *command)$/;"	f
+rs485_write_lock	rs485_driver/rs485.c	/^static pthread_mutex_t rs485_write_lock;$/;"	v	file:
+sensor_init	sensor_driver/sensor.c	/^static int sensor_init(void)$/;"	f	file:
+sensor_set_zero_pos	sensor_driver/sensor.c	/^static int sensor_set_zero_pos(void)$/;"	f	file:
+set_serial	rs485_driver/serial.c	/^static int set_serial(int fd,int nSpeed,int nBits,char nEvent,int nStop)$/;"	f	file:
+usage	main.c	/^static void usage(void)$/;"	f	file:

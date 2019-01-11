@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "sensor.h"
+#include "rs485.h"
 
 static void usage(void)
 {
@@ -15,21 +16,35 @@ static void usage(void)
 int main(int argc, char **argv)
 {
     int ret;
+    long debug = 0;
+    int enable = 0;
     float ret_val = 0.0f;
     
-    if (argc != 3)
+    if (argc < 2 || argc > 3)
     {
         usage();
         return -1;
     }
+
+    if (argc == 3)
+    {
+        debug = strtol(argv[argc-1], NULL, 10);
+
+        if (debug > 0)
+        {
+            enable = 1;
+        }
+
+        bsp_sensor_debug(enable);
+        rs485_debug(enable);
+    }
     
     bsp_sensor_init();
 
-    if (strcmp(argv[1], "set") == 0)
+    if (strcmp(argv[1], "zero") == 0)
     {
-        ret = bsp_sensor_get_current_pos(&ret_val);
         ret = bsp_sensor_set_zero_pos();
-        printf("set pos %f to zero\n", ret_val);
+        printf("power off the sensor and repower again\n");
     }
     else if (strcmp(argv[1], "pos") == 0)
     {
@@ -41,7 +56,6 @@ int main(int argc, char **argv)
         else
         {
             printf("current pos %f \n", ret_val);
-            printf("power off the sensor and repower again\n");
         }
     }
     else

@@ -11,4 +11,7 @@ void bsp_sensor_exit(void);
 int bsp_sensor_get_current_pos(float *ret_pos);
 int bsp_sensor_set_zero_pos(void);
 
+/* enable=1 打开debug使能， enable=0 关闭enable使能 */
+int bsp_sensor_debug(int enable);
+
 #endif
